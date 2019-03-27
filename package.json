@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chart.js": "^2.8.0",
     "react": "^16.8.4",
+    "react-canvas-js": "^1.0.1",
+    "react-chartkick": "^0.3.0",
     "react-dom": "^16.8.4",
+    "react-highcharts": "^16.0.2",
+    "react-minimal-pie-chart": "^3.5.0",
     "react-scripts": "2.1.8"
   },
   "scripts": {
