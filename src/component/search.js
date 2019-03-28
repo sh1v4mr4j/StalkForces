@@ -5,6 +5,8 @@ import Ratingchart from './ratingchart.js'
 import Submissions from './submissions.js'
 import TagChart from './tagChart.js'
 import Navbar from './navbar.js'
+import WrongUser from './wrongUser.js'
+import Footer from './footer.js'
 
 class Search extends Component {
     constructor(props){
@@ -14,6 +16,8 @@ class Search extends Component {
             flag:0
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
+
     }
 
     handleChange(event){
@@ -22,6 +26,25 @@ class Search extends Component {
             userHandle : event.target.value
            
             })
+    }
+
+    handleCheck() {
+        fetch(`http://codeforces.com/api/user.info?handles=${this.state.userHandle}`)
+        // .then(response => response.json())
+        .then((data) => {
+            this.setState({
+                flag:1
+            })
+
+            console.log(".then");
+        })
+        .catch((err) => {
+            this.setState({
+                flag:2
+            })
+            console.log(".catch");
+
+        })
     }
 
 
@@ -43,7 +66,7 @@ class Search extends Component {
                             This is our first website made<br />
                             using React. Enter the handle of<br />
                             the user you wanna stalk and you <br />
-                            can go through the user's codeforces<br />
+                            can go through the user's codeforces<br />                                                                                                                                                                                                                    
                             profile, rating, submissions and their <br />
                             Happy Hours. 
                         </pre>
@@ -52,11 +75,20 @@ class Search extends Component {
                 <div className="col-xs-6 col-md-6 offset-md-1 SearchBar">
                     <input type="text" className="form-control" aria-label="Default" value={this.state.userHandle} onChange={this.handleChange} aria-describedby="inputGroup-sizing-default" placeholder="Enter User Handle" />
                     <br />
-                    <button type="button" className="btn btn-lg btn-outline-info " onClick={()=>{this.setState({flag:1})}}>Stalk</button>
+                    <button type="button" className="btn btn-lg btn-outline-info " onClick={this.handleCheck}>Stalk</button>
                 </div>
             </div>
+            <Footer />
             </div>
         )
+        }
+        else if(this.state.flag===2){
+            return(
+                <div className="container-fluid">
+                    <Navbar />
+                    <WrongUser />
+                </div>
+            )
         }
         else
         {
@@ -64,30 +96,26 @@ class Search extends Component {
             
                 <div className="container-fluid container2">
                 <Navbar />
-                    <div className="row">
-                        <div className="col-md-7 offset-md-1">
-                            <div className="row round">
+                    <div className="row margin">
+                        <div className="col-md-7 offset-md-1 ">
+                            <div className="row ">
                             <TagChart handle={this.state.userHandle} />
                             </div>
-                            <div className="row round pie">
+                            <br />
+                            <div className="row pie pieMargin">
                                 <Submissions handle={this.state.userHandle}  />
                             </div>
                             <br />
-                            <div className="row round">
+                            <br />
+                            <div className="row ">
                                 <Ratingchart handle={this.state.userHandle} />
                             </div>
                             
                         </div>
-                        <div className="col-md-4 round">
+                        <div className="col-md-4 profile">
                             <Profile handle={this.state.userHandle} />
                         </div>
-                    
-                    
                     </div>
-                    
-                
-                
-                    
                 </div>
     
         )

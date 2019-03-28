@@ -9,6 +9,25 @@ border-radius: 15px;
     width : 100;
  }
 
+ .icon {
+    margin-top: 3.4%; 
+ }
+
+ .footer {
+     margin-top: 23%;
+     margin-left: -2%;
+    margin-right: -2%;
+ }
+
+.profile {
+    position: fixed;
+    margin-left: 60%;
+    margin-top: 1%;
+    border-radius:4%;
+    border-color: pink;
+    border-width: 10px;
+    overflow: hidden;
+}
 
 .SearchBar {
     margin-top: 20%;
@@ -18,11 +37,23 @@ border-radius: 15px;
     overflow: scroll;
 }
 .round {
-    border-radius: 60%;
-    border-color: pink;
-    border-width: 10px;
-    padding: 5%;
+    border-radius: 6%;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    /*padding: 5%;*/
+    overflow: hidden;
+    
 }
+
+.margin {
+    margin-top: 7%;
+}
+
+.pieMargin {
+    margin-right: 8%;
+}
+
 .container{
     background-color: #defcfc;
 }
@@ -34,7 +65,7 @@ border-radius: 15px;
 }
 .btn-lg{
     width:120px;
-    margin-left: 35%;
+    margin-left: 40%;
 }
 .pie {
     padding-right: 30%;
@@ -52,6 +83,10 @@ border-radius: 15px;
 }
 
 .navbar {
+    position:fixed;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
     margin-left: -1%;
     margin-right: -1%;
 }

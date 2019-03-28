@@ -7,7 +7,7 @@ class Profile extends Component{
             userData:{
                 handle:'',
                 pic:'',
-                lastOnline:0,
+                lastOnline:'',
                 rank:'',
                 maxRating:0,
                 maxRank:'',
@@ -24,10 +24,15 @@ class Profile extends Component{
         .then(response => response.json())
         .then((data) => {
             console.log(data.result.length)
+            var d = new Date();
+            d.setTime(data.result[0].lastOnlineTimeSeconds*1000);
+            var da=d.toLocaleTimeString();
+            var ad = d.toDateString();
+            var daad = da+" " +ad;    
                 this.setState({
                     handle:data.result[0].handle,
                     pic:data.result[0].titlePhoto,
-                    lastOnline:data.result[0].lastOnlineTimeSeconds,
+                    lastOnline:daad,
                     rank:data.result[0].rank,
                     maxRating:data.result[0].maxRating,
                     maxRank:data.result[0].maxRank,
@@ -51,34 +56,33 @@ class Profile extends Component{
       render(){
         const {handle} = this.props;
         return(
-            <div className="card" >
+                    <div className="card" >
                         <img className="card-img-top" src={this.state.pic} alt="Card image cap" /> 
-                <div className="card-header">
-                 <b> {this.state.handle} </b>
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Rating : {this.state.curRating}</li>
-                    </ul>
-                    <div className="card-header">
-                    Rank : {this.state.rank}
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">last Online: {this.state.lastOnline}</li>
-                    </ul>
-                    <div className="card-header">
-                   Max Rating: {this.state.maxRating} 
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Max Rank: {this.state.maxRank}</li>
-                    </ul>   
-                    <div className="card-header">
-                    Friends: {this.state.friendsOf}
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Contribution : {this.state.contributions}</li>
-                </ul>         
-                   
-            </div>
+                        <div className="card-header">
+                            <b> {this.state.handle}  </b>
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">Rating : {this.state.curRating}</li>
+                        </ul>
+                        <div className="card-header">
+                            Rank : {this.state.rank}
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">last Online: {this.state.lastOnline} </li>
+                        </ul>
+                        <div className="card-header">
+                            Max Rating: {this.state.maxRating} 
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">Max Rank: {this.state.maxRank}</li>
+                        </ul>   
+                        <div className="card-header">
+                            Friends: {this.state.friendsOf}
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">Contribution : {this.state.contributions}</li>
+                        </ul>         
+                    </div>
         )
     }
 }

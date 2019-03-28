@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import ReactChartkick, { LineChart, PieChart } from 'react-chartkick'
+import ReactChartkick, {  PieChart } from 'react-chartkick'
 import Chart from 'chart.js'
 import './comp.css'
 
@@ -81,7 +81,7 @@ class Submissions extends Component{
 		
 	
         return (
-            <PieChart data={[["OK",this.state.submit[0] ], ["COMPILATION_ERROR", this.state.submit[1]], ["RUNTIME_ERROR", this.state.submit[2]],["WRONG_ANSWER", this.state.submit[3]],["TIME_LIMIT_EXCEEDED", this.state.submit[4]],["MEMORY_LIMIT_EXCEEDED", this.state.submit[5]],["TESTING", this.state.submit[6]],["OTHERS", this.state.submit[7]]]}   />
+            <PieChart data={[["COMPILATION_ERROR",this.state.submit[1] ], ["WRONG_ANSWER", this.state.submit[3]], ["RUNTIME_ERROR", this.state.submit[2]],["OK", this.state.submit[0]],["TIME_LIMIT_EXCEEDED", this.state.submit[4]],["MEMORY_LIMIT_EXCEEDED", this.state.submit[5]],["TESTING", this.state.submit[6]],["OTHERS", this.state.submit[7]]]}   />
             );
     }
 
