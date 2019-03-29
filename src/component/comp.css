@@ -9,14 +9,22 @@ border-radius: 15px;
     width : 100;
  }
 
+.card {
+    max-height: 30%;
+    max-width: 65%;
+}
+.rating {
+    max-width: 90%;
+}
+
  .icon {
     margin-top: 3.4%; 
  }
 
  .footer {
      margin-top: 23%;
-     margin-left: -2%;
-    margin-right: -2%;
+     margin-left: -1%;
+    margin-right: -0.5%;
  }
 
 .profile {
@@ -26,7 +34,6 @@ border-radius: 15px;
     border-radius:4%;
     border-color: pink;
     border-width: 10px;
-    overflow: hidden;
 }
 
 .SearchBar {
@@ -44,6 +51,20 @@ border-radius: 15px;
     /*padding: 5%;*/
     overflow: hidden;
     
+}
+
+.devNames {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+
+}
+
+.devNames:hover {
+    color: lightcyan;
+}
+
+.loader {
+    margin-left: 45%;
 }
 
 .margin {

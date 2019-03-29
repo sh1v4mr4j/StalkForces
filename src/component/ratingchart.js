@@ -114,7 +114,7 @@ class Ratingchart extends Component {
 
     render(){
         return(
-            <div className="round" id="containerra">
+            <div className="rating round" id="containerra">
             </div>
         )
     }
