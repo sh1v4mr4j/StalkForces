@@ -7,13 +7,15 @@ import TagChart from './tagChart.js'
 import Navbar from './navbar.js'
 import WrongUser from './wrongUser.js'
 import Footer from './footer.js'
+import Loading from './Loading.js'
 
 class Search extends Component {
     constructor(props){
         super(props);
         this.state ={
             userHandle:'',
-            flag:0
+            flag:0,
+            loading:false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleCheck = this.handleCheck.bind(this);
@@ -29,12 +31,24 @@ class Search extends Component {
     }
 
     handleCheck() {
+        this.setState({
+                loading:true
+            })
+
         fetch(`http://codeforces.com/api/user.info?handles=${this.state.userHandle}`)
         // .then(response => response.json())
         .then((data) => {
             this.setState({
-                flag:1
+                flag:1,
             })
+
+            setTimeout(
+                function() {
+                    this.setState({loading: false});
+                }
+                .bind(this),
+                3000
+            );
 
             console.log(".then");
         })
@@ -42,6 +56,14 @@ class Search extends Component {
             this.setState({
                 flag:2
             })
+
+            setTimeout(
+                function() {
+                    this.setState({loading: false});
+                }
+                .bind(this),
+                2000
+            );
             console.log(".catch");
 
         })
@@ -52,7 +74,15 @@ class Search extends Component {
     {
         if(this.state.flag===0)
         {
-        return(
+            if(this.state.loading)
+            {
+                return (
+                    <div className="loader"><Loading /></div>
+                )
+            }
+
+            else
+            return(
 
             <div className="container-fluid">
             <Navbar />
@@ -83,6 +113,14 @@ class Search extends Component {
         )
         }
         else if(this.state.flag===2){
+            if(this.state.loading)
+            {
+                return (
+                    <div className="loader"><Loading /></div>
+                )
+            }
+
+            else
             return(
                 <div className="container-fluid">
                     <Navbar />
@@ -92,7 +130,15 @@ class Search extends Component {
         }
         else
         {
-        return(
+            if(this.state.loading)
+            {
+                return (
+                    <div className="loader"><Loading /></div>
+                )
+            }
+
+            else
+            return(
             
                 <div className="container-fluid container2">
                 <Navbar />
